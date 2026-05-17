@@ -1,0 +1,18 @@
+@model EcommerceApp.Models.Product
+@{
+ ViewData["Title"] = "Product Details";
+}
+<h1 class="mb-4">Product Details</h1>
+<div class="card">
+ <div class="card-body">
+    <h4 class="card-title">@Model.Name</h4>
+ <p class="card-text">
+ <strong>Price:</strong> @Model.Price
+ </p>
+ <p class="card-text">
+ <strong>Stock:</strong> @Model.StockQuantity
+ </p>
+ <hr />
+ <a asp-action="Index" class="btn btn-secondary">Return to Products</a>
+ </div>
+</div>

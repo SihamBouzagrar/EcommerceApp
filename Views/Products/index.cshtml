@@ -1,0 +1,48 @@
+@model List<EcommerceApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+<h1 class="mb-4">Products List</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">+ Create New Product</a>
+</p>
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        No products available.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Created At</th>
+                <th style="width:180px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price</td>
+                    <td>@product.StockQuantity</td>
+                    <td>@product.CreatedAt.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-info btnsm">Details</a>
+                        <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning btnsm">Edit</a> <a
+                        asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger btnsm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+}

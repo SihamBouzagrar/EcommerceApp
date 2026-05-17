@@ -1,0 +1,5 @@
+bin/
+obj/
+.vs/ 
+ScaffoldingReadMe.txt
+appsettings.Development.json
