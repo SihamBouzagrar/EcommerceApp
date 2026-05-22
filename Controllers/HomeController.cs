@@ -6,26 +6,29 @@ namespace EcommerceApp.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IConfiguration _configuration;
+    public HomeController(IConfiguration configuration)
     {
-        _logger = logger;
+        _configuration = configuration;
     }
-
     public IActionResult Index()
     {
+        ViewBag.Message =
+        _configuration["EnvironmentMessage"];
         return View();
     }
+
+    //   private readonly ILogger<HomeController> _logger;
+
 
     public IActionResult Privacy()
     {
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    /*   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+       public IActionResult Error()
+       {
+           return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+       }*/
 }
